@@ -78,52 +78,52 @@
         {{ if site.Params.features.blog.shareButtons }}
             <strong>{{ i18n "share_on" }}:</strong>
             {{ if site.Params.features.blog.shareButtons.facebook }}
-            <a class="btn btn-sm facebook-btn" href="https://www.facebook.com/sharer.php?u={{ .Permalink }}" target="_blank">
+            <a class="btn btn-sm facebook-btn" href="https://www.facebook.com/sharer.php?u={{ .Permalink }}" target="_blank" aria-label="Share this post on Facebook">
               <i class="fab fa-facebook"></i>
             </a>
             {{ end }}
             {{ if site.Params.features.blog.shareButtons.twitter }}
-                <a class="btn btn-sm twitter-btn" href="https://twitter.com/share?url={{ .Permalink }}&text={{ .Title }}&via={{- site.Title -}}" target="_blank">
+                <a class="btn btn-sm twitter-btn" href="https://twitter.com/share?url={{ .Permalink }}&text={{ .Title }}&via={{- site.Title -}}" target="_blank" aria-label="Share this post on Twitter">
                   <i class="fab fa-twitter"></i>
                 </a>
             {{ end }}
             {{ if site.Params.features.blog.shareButtons.reddit }}
-                <a  class="btn btn-sm reddit-btn" href="https://reddit.com/submit?url={{ .Permalink }}&title={{ .Title }}" target="_blank">
+                <a  class="btn btn-sm reddit-btn" href="https://reddit.com/submit?url={{ .Permalink }}&title={{ .Title }}" target="_blank" aria-label="Share this post on Reddit">
                   <i class="fab fa-reddit"></i>
                 </a>
             {{ end }}
             {{ if site.Params.features.blog.shareButtons.tumblr }}
-                <a class="btn btn-sm tumblr-btn" href="https://www.tumblr.com/share/link?url={{ .Permalink }}&name={{ .Title }}{{- with .Params.description -}}&description={{- . -}}{{- end -}}" target="_blank">
+                <a class="btn btn-sm tumblr-btn" href="https://www.tumblr.com/share/link?url={{ .Permalink }}&name={{ .Title }}{{- with .Params.description -}}&description={{- . -}}{{- end -}}" target="_blank" aria-label="Share this post on Tumblr">
                   <i class="fab fa-tumblr"></i>
                 </a>
             {{ end }}
             {{ if site.Params.features.blog.shareButtons.pocket }}
-                <a class="btn btn-sm pocket-btn" href="https://getpocket.com/save?url={{ .Permalink }}&title={{ .Title }}" target="_blank">
+                <a class="btn btn-sm pocket-btn" href="https://getpocket.com/save?url={{ .Permalink }}&title={{ .Title }}" target="_blank" aria-label="Share this post on Pocket">
                   <i class="fab fa-get-pocket"></i>
                 </a>
             {{ end }}
             {{ if site.Params.features.blog.shareButtons.linkedin }}
-                <a class="btn btn-sm linkedin-btn" href="https://www.linkedin.com/shareArticle?url={{ .Permalink }}&title={{ .Title }}" target="_blank">
+                <a class="btn btn-sm linkedin-btn" href="https://www.linkedin.com/shareArticle?url={{ .Permalink }}&title={{ .Title }}" target="_blank" aria-label="Share this post on LinkedIn">
                   <i class="fab fa-linkedin"></i>
                 </a>
             {{ end }}
             {{ if site.Params.features.blog.shareButtons.diaspora }}
-                <a class="btn btn-sm diaspora-btn" href="https://share.diasporafoundation.org/?title={{ .Title }}&url={{ .Permalink }}" rel="nofollow" target="_blank">
+                <a class="btn btn-sm diaspora-btn" href="https://share.diasporafoundation.org/?title={{ .Title }}&url={{ .Permalink }}" rel="nofollow" target="_blank" aria-label="Share this post on Diaspora">
                   <i class="fab fa-diaspora"></i>
                 </a>
             {{ end }}
              {{ if site.Params.features.blog.shareButtons.mastodon }}
-                <a class="btn btn-sm mastodon-btn" href="https://mastodon.social/share?text={{ .Title }} - {{ .Permalink }}" target="_blank">
+                <a class="btn btn-sm mastodon-btn" href="https://mastodon.social/share?text={{ .Title }} - {{ .Permalink }}" target="_blank" aria-label="Share this post on Mastodon">
                   <i class="fab fa-mastodon"></i>
                 </a>
             {{ end }}
             {{ if site.Params.features.blog.shareButtons.whatsapp }}
-                 <a class="btn btn-sm whatsapp-btn" href="https://api.whatsapp.com/send?text={{ .Title }} {{ .Permalink }}" target="_blank">
+                 <a class="btn btn-sm whatsapp-btn" href="https://api.whatsapp.com/send?text={{ .Title }} {{ .Permalink }}" target="_blank" aria-label="Share this post on Whatsapp">
                   <i class="fab fa-whatsapp"></i>
                 </a>
             {{ end }}
             {{ if site.Params.features.blog.shareButtons.email }}
-                <a class="btn btn-sm email-btn" href="mailto:?subject={{ .Title }}&body={{ .Permalink }}" target="_blank">
+                <a class="btn btn-sm email-btn" href="mailto:?subject={{ .Title }}&body={{ .Permalink }}" target="_blank" aria-label="Email this post">
                   <i class="fas fa-envelope-open-text"></i>
                 </a>
             {{ end }}

@@ -1,19 +1,19 @@
 {{ $js := slice }}
 
-{{ range .files }}
-  {{ with resources.Get . }}
+{{ range .remoteFiles }}
+  {{ with resources.GetRemote . }}
     {{ with .Err }}
-    {{ errorf "Unable to get css: %s" . }}
+    {{ errorf "Unable to get remote js: %s" . }}
     {{ else }}
     {{ $js =  $js | append . }}
     {{ end }}
   {{ end }}
 {{ end }}
 
-{{ range .remoteFiles }}
-  {{ with resources.GetRemote . }}
+{{ range .files }}
+  {{ with resources.Get . }}
     {{ with .Err }}
-    {{ errorf "Unable to get remote js: %s" . }}
+    {{ errorf "Unable to get css: %s" . }}
     {{ else }}
     {{ $js =  $js | append . }}
     {{ end }}

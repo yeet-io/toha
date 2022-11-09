@@ -1,5 +1,5 @@
 <div class="col-lg-4 col-md-6 pt-2 post-card">
-  <a href="{{ .RelPermalink }}" title="{{ .Title }}" class="post-card-link">
+  <a href="{{ .RelPermalink }}" class="post-card-link" aria-label="{{ .Title }}">
     <div class="card">
       <div class="card-head">
         <img class="card-img-top" src='{{ partial "helpers/get-hero-preview.html" . }}'
