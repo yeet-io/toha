@@ -1,0 +1,25 @@
+{{ $js := slice }}
+
+{{ range .files }}
+  {{ with resources.Get . }}
+    {{ with .Err }}
+    {{ errorf "Unable to get css: %s" . }}
+    {{ else }}
+    {{ $js =  $js | append . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ range .remoteFiles }}
+  {{ with resources.GetRemote . }}
+    {{ with .Err }}
+    {{ errorf "Unable to get remote js: %s" . }}
+    {{ else }}
+    {{ $js =  $js | append . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+
+{{ $bundle := $js | resources.Concat .name | minify }}
+<script src="{{ $bundle.Permalink }}" integrity="{{ $bundle.Data.Integrity }}"></script>

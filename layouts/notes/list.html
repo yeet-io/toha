@@ -1,10 +1,13 @@
 {{ define "header" }}
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
-  />
-  <link rel="stylesheet" href="{{ "/css/layouts/notes.css" | relURL}}">
-  <link rel="stylesheet" href="{{ "/css/navigators/sidebar.css" | relURL}}">
+{{ partial "helpers/bundle-css.html" (dict "name" "list.css" 
+  "files" (slice
+    "/css/layouts/notes.css"
+    "css/navigators/sidebar.css"
+  )
+  "remoteFiles" (slice
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+  )
+)}}
 {{ end }}
 
 {{ define "navbar" }}
@@ -57,9 +60,16 @@
 {{ end }}
 
 {{ define "scripts" }}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
-  <script src="{{ "/js/imagesloaded.pkgd.min.js" | relURL }}"></script>
-  <script src="{{ "/js/note.js" | relURL }}"></script>
+{{ partial "helpers/bundle-js.html" (dict "name" "notes.js" 
+  "files" (slice 
+    "js/imagesloaded.pkgd.min.js"
+    "js/note.js"
+  )
+  "remoteFile" (slice
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"
+  )
+)}}
+
   <script>
     hljs.initHighlightingOnLoad();
   </script>

@@ -2,24 +2,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+{{ $files := slice }}
+
 <!-- ============ import common css ========== -->
-<link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | relURL }}"/>
-<link rel="stylesheet" href="{{ "/css/layouts/main.css" | relURL }}"/>
-<link rel="stylesheet" href="{{ "/css/navigators/navbar.css" | relURL }}"/>
-<link rel="stylesheet" href="{{ "/css/plyr.css" | relURL }}"/>
-{{ if ne site.Params.showFlags false }}
-<link rel="stylesheet" href="{{ "/css/flag-icon.min.css" | relURL }}"/>
-{{ end }}
+{{ $files = $files | append
+  "css/bootstrap.min.css"
+  "css/layouts/main.css"
+  "css/navigators/navbar.css"
+  "css/plyr.css"
+}}
+{{ if site.Params.showFlags }}
+  {{ $files = $files | append "css/flag-icon.min.css" }}
+{{ end}}
 <!--=================== fonts ==============================-->
-<link rel="stylesheet" href="{{ "/google-fonts/Mulish/mulish.css" | relURL }}"/>
-
+{{ $files = $files | append "google-fonts/Mulish/mulish.css" }}
 <!--=================== icons ==============================-->
-<link rel="stylesheet" href="{{ "/fontawesome/css/all.min.css" | relURL }}"/>
-
+{{ $files = $files | append "fontawesome/css/all.min.css" }}
 <!--=================== dark mode ==========================-->
 {{ if site.Params.darkMode.enable }}
-<link rel="stylesheet" href="{{ "/css/colortheme/colortheme.css" | relURL }}"/>
+  {{ $files = $files | append "css/colortheme/colortheme.css" }}
 {{ end }}
+<!--=================== make bundled css ===================-->
+{{ partial "helpers/bundle-css.html" (dict "files" $files "name" "common.css") }}
 
 <!--================= fab-icon =========================-->
 {{/* add favicon only if the site author has provided the the favicon */}}

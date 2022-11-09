@@ -1,0 +1,24 @@
+{{ $css := slice }}
+
+{{ range .files }}
+  {{ with resources.Get . }}
+    {{ with .Err }}
+      {{ errorf "Unable to get css: %s" . }}
+    {{ else }}
+    {{ $css =  $css | append . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ range .remoteFiles }}
+  {{ with resources.GetRemote . }}
+    {{ with .Err }}
+      {{ errorf "Unable to get remote css: %s" . }}
+    {{ else }}
+    {{ $css =  $css | append . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $bundle := $css | resources.Concat .name | minify }}
+<link rel="stylesheet" href="{{ $bundle.Permalink }}" />

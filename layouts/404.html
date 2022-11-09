@@ -1,5 +1,5 @@
 {{ define "header" }}
-    <link rel="stylesheet" href="{{ "/css/404.css" | relURL }}">
+  {{ partial "helpers/bundle-css.html" (dict "name" "404.css" "files" (slice "css/404.css")) }}
 {{ end }}
 
 {{ define "navbar" }}

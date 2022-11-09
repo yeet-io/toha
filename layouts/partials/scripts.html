@@ -1,14 +1,16 @@
-<script type="text/javascript" src="{{ "/js/jquery-3.6.1.min.js" | relURL }}"></script>
-<script type="text/javascript" src="{{ "/js/popper.min.js" | relURL }}"></script>
-<script type="text/javascript" src="{{ "/js/bootstrap.min.js" | relURL }}"></script>
-
-<script type="text/javascript" src="{{ "/js/navbar.js" | relURL }}"></script>
-<script type="text/javascript" src="{{ "/js/plyr.js" | relURL }}"></script>
-<script type="text/javascript" src="{{ "/js/main.js" | relURL }}"></script>
+{{ $files := slice
+  "js/jquery-3.6.1.min.js"
+  "js/popper.min.js"
+  "js/bootstrap.min.js"
+  "js/navbar.js"
+  "js/plyr.js"
+  "js/main.js"
+}}
 
 {{ if site.Params.darkMode.enable }}
 {{ if eq site.Params.darkMode.provider "darkreader" }}
-<script type="text/javascript" src="{{ "/js/darkreader.js" | relURL }}"></script>
-<script type="text/javascript" src="{{ "/js/darkmode-darkreader.js" | relURL }}"></script>
+{{ $files = $files | append "js/darkreader.js" "js/darkmode-darkreader.js" }}
 {{ end }}
 {{ end }}
+
+{{ partial "helpers/bundle-js.html" (dict "name" "common.js" "files" $files) }}

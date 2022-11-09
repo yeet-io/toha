@@ -10,25 +10,30 @@
       {{ end }}
     {{ end }}
     <meta name="description" content="{{ $siteDescription }}" />
+    {{- partial "opengraph.html" . -}}
     
     <!-- import common headers -->
     {{- partial "header.html" . -}}
-    {{- partial "opengraph.html" . -}}
 
     <!-- import index page specific headers -->
-    <link rel="stylesheet" href="{{ "/css/sections/home.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/about.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/skills.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/experiences.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/education.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/projects.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/recent-posts.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/achievements.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/accomplishments.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/publications.css" | relURL }}"/>
+    {{ $files := slice
+      "css/sections/home.css"
+      "css/sections/about.css"
+      "css/sections/skills.css"
+      "css/sections/experiences.css"
+      "css/sections/education.css"
+      "css/sections/projects.css"
+      "css/sections/recent-posts.css"
+      "css/sections/achievements.css"
+      "css/sections/accomplishments.css"
+      "css/sections/publications.css"
+    }}
 
     <!--================= custom style overrides =========================-->
-    <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}"/>
+    {{ $files = $files | append "css/style.css" }}
+
+    <!--================= bundle css =========================-->
+    {{ partial "helpers/bundle-css.html" (dict "name" "home.css" "files" $files) }}
     
     <!--================= add analytics if enabled =========================-->
     {{- partial "analytics.html" . -}}
@@ -76,13 +81,14 @@
     {{ partial "scripts.html" . }}
 
     <!--- ADD INDEX PAGE SPECIFIC SCRIPTS -->
-    <script src="{{ "/js/itype.min.js" | relURL }}"></script>
-    <script src="{{ "/js/github-button.js" | relURL }}"></script>
-    <script src="{{ "/js/home.js" | relURL }}"></script>
-    <script src="{{ "/js/jquery.filterizr.min.js" | relURL }}"></script>
+    {{ partial "helpers/bundle-js.html" (dict "name" "home.js" "files" (slice
+        "js/itype.min.js"
+        "js/github-button.js"
+        "/js/home.js"
+        "js/jquery.filterizr.min.js"
+    )) }}
 
     <!------ ADD SUPPORT LINKS -------->
     {{- partial "misc/support.html" . -}}
-
   </body>
 </html>

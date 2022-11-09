@@ -1,9 +1,9 @@
 {{ define "header" }}
-    <link rel="stylesheet" href="{{ "/css/layouts/list.css" | relURL }}">
-    <link rel="stylesheet" href="{{ "/css/navigators/sidebar.css" | relURL}}">
-    <!--================= custom style overrides =========================-->
-    <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}"/>
-
+  {{ partial "helpers/bundle-css.html" (dict "name" "list.css" "files" (slice
+  "css/layouts/list.css"
+  "css/navigators/sidebar.css"
+  "css/style.css"
+  ))}}
 {{ end }}
 
 {{ define "navbar" }}
@@ -58,5 +58,5 @@
 {{ end }}
 
 {{ define "scripts" }}
-    <script src="{{ "/js/list.js" | relURL }}"></script>
+{{ partial "helpers/bundle-js.html" (dict "name" "list.js" "files" (slice "js/list.js"))}}
 {{ end }}

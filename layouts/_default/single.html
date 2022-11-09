@@ -1,13 +1,16 @@
 {{ define "header" }}
 <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Title }}{{ end }}" />
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
-/>
-<link rel="stylesheet" href="{{ "/css/layouts/single.css" | relURL }}"/>
-<link rel="stylesheet" href="{{ "/css/navigators/sidebar.css" | relURL }}">
-<!--================= custom style overrides =========================-->
-<link rel="stylesheet" href="{{ "/css/style.css" | relURL }}"/>
+
+{{ partial "helpers/bundle-css.html" (dict "name" "single.css" 
+  "remoteFiles" (slice 
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+  )
+  "files" (slice
+  "css/layouts/single.css"
+  "css/navigators/sidebar.css"
+  "css/style.css"
+  )
+)}}
 
 {{ end }}
 
@@ -192,8 +195,15 @@
 {{ end }}
 
 {{ define "scripts" }}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
-<script src="{{ "/js/single.js" | relURL }}"></script>
+{{ partial "helpers/bundle-js" (dict 
+  "name" "single.js" 
+  "remoteFiles" (slice
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"
+  )
+  "files" (slice
+    "js/single.js"
+  )
+)}}
 <script>
   hljs.initHighlightingOnLoad();
 </script>
