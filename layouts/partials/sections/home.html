@@ -29,10 +29,11 @@
 
 {{/* apply image processing. don't use "Fit" in svg or gif because its not supported */}}
 {{ if and $authorImage (and (ne $authorImage.MediaType.SubType "svg") ( ne $authorImage.MediaType.SubType "gif")) }}
-  {{ $authorImage = $authorImage.Fit "276x276" }}
+  {{ $authorImage = $authorImage.Fit "276x276 webp q50" }}
 {{ end }}
 {{/* get file that matches the filename as specified as src="" in shortcode */}}
 {{ $src := resources.Get $backgroundImage }}
+{{ $src = $src.Resize (printf "%dx%d webp q50" $src.Width $src.Height) }}
 
 {{/* set image sizes, these are hardcoded for now, x dictates that images are resized to this width */}}
 

@@ -22,7 +22,7 @@
 
 {{/* resize hero image. don't resize if the image is an svg */}}
 {{ if and $heroImage (ne $heroImage.MediaType.SubType "svg") }}
-  {{ $heroImage = $heroImage.Resize "2048x webp q50" }}
+  {{ $heroImage = $heroImage.Resize "696x webp q50" }}
 {{ end }}
 
 {{/*  return the hero image  */}}
