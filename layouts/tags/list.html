@@ -1,4 +1,5 @@
 {{ define "header" }}
+<meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Title }}{{ end }}" />
 {{ partial "helpers/bundle-css.html" (dict "name" "list.css" "files" (slice
 "css/layouts/list.css"
 "css/navigators/sidebar.css"

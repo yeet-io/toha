@@ -1,9 +1,10 @@
 {{ define "header" }}
-    {{ partial "helpers/bundle-css.html" (dict "name" "list.css" "files" (slice
-      "css/layouts/list.css"
-      "css/navigators/sidebar.css"
-      "css/style.css"
-    ))}}
+  <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Title }}{{ end }}" />
+  {{ partial "helpers/bundle-css.html" (dict "name" "list.css" "files" (slice
+    "css/layouts/list.css"
+    "css/navigators/sidebar.css"
+    "css/style.css"
+  ))}}
 {{ end }}
 
 {{ define "navbar" }}
@@ -25,9 +26,11 @@
         <div class="sidebar-tree">
           <ul class="tree" id="tree">
             <li id="list-heading"><a href="{{ .Type | relLangURL }}" data-filter="all">{{ i18n .Type }}</a></li>
-            <div class="subtree">
+            <li style="position: unset; padding-left: 0.7em">
+              <ul class="subtree">
                 {{ partial "navigators/sidebar.html" (dict "menuName" "sidebar" "menuItems" site.Menus.sidebar "ctx" .) }}
-            </div>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>

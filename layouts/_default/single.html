@@ -28,9 +28,11 @@
         <div class="sidebar-tree">
           <ul class="tree" id="tree">
             <li id="list-heading"><a href="{{ "/posts" | relLangURL }}" data-filter="all">{{ i18n "posts" }}</a></li>
-            <div class="subtree">
+            <li style="position: unset; padding-left: 0.7em">
+              <ul class="subtree">
                 {{ partial "navigators/sidebar.html" (dict "menuName" "sidebar" "menuItems" site.Menus.sidebar "ctx" .) }}
-            </div>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
@@ -173,7 +175,7 @@
     </div>
   </div>
   <!--scroll back to top-->
-  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  <button id="scroll-to-top" class="btn" aria-label="Scroll To Top"><i class="fas fa-chevron-circle-up"></i></button>
   {{ if .IsTranslated }}
     {{ partial "navigators/floating-lang-selector.html" . }}
   {{ end }}
@@ -184,7 +186,7 @@
   <section class="toc-section" id="toc-section">
     {{ if and site.Params.enableTOC ( .Params.enableTOC | default true ) }}
     <div class="toc-holder">
-      <h5 class="text-center pl-3">{{ i18n "toc_heading" }}</h5>
+      <p class="text-center pl-3 pt-3 h5">{{ i18n "toc_heading" }}</p>
       <hr>
       <div class="toc">
         {{ .TableOfContents }}
